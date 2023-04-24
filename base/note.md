@@ -545,22 +545,158 @@ func testArray(x [2]int) {
 
 学习指针，需要弄清三个概念：指针地址，指针类型，指针取值
 
-
+### 基本概念
 
 > 指针地址
 
 程序运行时，变量都会在内存中拥有一个地址，这个地址代表变量在内存中的位置，指针地址就是变量的内存地址
 
+
+
 > 指针类型
 
 Go语言中的值类型`int、float、bool、string、array、struct`都有对应的指针类型，：如：`*int,*int64,*string`，指针类型给出解引用（引用指向变量的值）最多能够操作多少字节的信息
+
+
 
 > 指针取值
 
 指针取值就是解引用（引用指向变量的值）
 
+
+
 > 演示示例
 
+指针地址、指针类型、指针取值示例：
+
 ```go
+func main() {
+	a := 10
+	b := &a                         
+	fmt.Printf("type of b:%T\n", b) 
+	c := *b
+	fmt.Printf("type of c:%T\n", c)
+	fmt.Printf("value of c:%v\n", c)
+}
+/**
+打印结果：
+    a:10,addr:0xc00001a088
+    b:0xc00001a088,addr:0xc00000a028
+    type of b:*int
+    type of c:int
+    value of c:10
+*/
+```
+
+以上示例说明：
+
+- a 是基本类型变量，通过取地址操作（&），将a变量地址赋值给了b变量，此时b变量为指针变量，指针类型为`*int`
+- 通过指针取值操作（*），将指针变量b指向的变量赋值给了c，此时c变量为基本类型变量，变量类型为`int`
+
+小结：
+
+- `&`为取地址操作符，`*`为取值操作符，是一对互补操作
+
+
+
+指针传值示例:
+
+```go
+func modify1(x int) {
+    x = 100
+}
+
+func modify2(x *int) {
+    *x = 100
+}
+
+func main() {
+    a := 10
+    modify1(a)
+    fmt.Println(a) // 10
+    modify2(&a)
+    fmt.Println(a) // 100
+}
+```
+
+
+
+### 空指针
+
+指针被定义未分配变量，则它的初始值为nil
+
+```go
+func main() {
+    var p *string
+    fmt.Println(p)
+    fmt.Printf("p的值是%v\n", p)
+    if p != nil {
+        fmt.Println("非空")
+    } else {
+        fmt.Println("空值")
+    }
+}
+/**
+打印结果:
+    <nil>
+    p的值是<nil>
+    空值      
+*/
+```
+
+
+
+### 内置函数（new、make）
+
+引入示例：
+
+```go
+func main() {
+    var a *int
+    *a = 100
+    fmt.Println(*a)
+
+    var b map[string]int
+    b["测试"] = 100
+    fmt.Println(b)
+}
+```
+
+以上代码执行有panic报错；原因是：GO语言在使用引用变量时，不仅要声明它，还需要为它分配地址。而对于值类型则不需要，因为值类型变量在声明时就已经默认分配好了内存。
+
+关于内存分配，GO语言主要是使用`new`，`make` 两个内置函数进行内存分配
+
+> new
+
+```go
+func new(Type) *Type
+```
+
+- `Type`表示数据类型
+- `*Type`表示类型指针
+
+new函数 较少使用，new函数主要用于获取一个类型的指针，且指针对应的值为该类型的默认值
+
+示例：
+
+```go
+func main() {
+    a := new(int)
+    b := new(bool)
+    fmt.Printf("%T\n", a) // *int
+    fmt.Printf("%T\n", b) // *bool
+    fmt.Println(*a)       // 0
+    fmt.Println(*b)       // false
+}    
+```
+
+
+
+
+
+> make
+
+```go
+func make(t Type, size ...IntegerType) Type
 ```
 
