@@ -1,4 +1,4 @@
-package pointerDemo
+package pointer
 
 import "fmt"
 

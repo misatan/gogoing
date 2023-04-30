@@ -1,14 +1,14 @@
-package sliceDemo
+package slice
 
 import "fmt"
 
 func main() {
-	// test1()
-	test2()
+	// demo01test1()
+	demo01test2()
 }
 
-//数组函数传参,数组复制验证
-func test1() {
+// 数组函数传参,数组复制验证
+func demo01test1() {
 	arrayA := [2]int{100, 200}
 	var arrayB [2]int
 
@@ -20,7 +20,7 @@ func test1() {
 	testArray(arrayA)
 }
 
-func test2() {
+func demo01test2() {
 	arrayA := []int{100, 200}
 	testArrayPoint(&arrayA) //1.传数组指针
 	arrayB := arrayA[:]
