@@ -1,4 +1,4 @@
-package main
+package teststruct
 
 import "fmt"
 
@@ -21,7 +21,7 @@ func (a *Animal) move() {
 	fmt.Printf("%s会移动\n", a.name)
 }
 
-// 结构体的继承
+// Dog 结构体的继承
 type Dog struct {
 	Feet    int8
 	*Animal //通过嵌套匿名结构体实现继承

@@ -1,11 +1,11 @@
-package main
+package teststruct
 
 import "fmt"
 
-//类型定义
+// 类型定义
 type newInt int
 
-//类型别名
+// 类型别名
 type myInt = int
 
 func main() {

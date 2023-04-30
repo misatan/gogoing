@@ -1,15 +1,10 @@
-package main
+package teststruct
 
 import "fmt"
 
 func main() {
 	p := newPerson("sw", "wuhu", 18)
 	fmt.Printf("%#v\n", p)
-}
-
-type person struct {
-	name, city string
-	age        int8
 }
 
 /*

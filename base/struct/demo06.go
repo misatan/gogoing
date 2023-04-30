@@ -1,8 +1,9 @@
-package main
+package teststruct
 
 import "fmt"
 
-/**
+/*
+*
 面试题
 */
 func main() {

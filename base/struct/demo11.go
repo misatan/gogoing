@@ -1,4 +1,4 @@
-package main
+package teststruct
 
 import "fmt"
 
@@ -30,21 +30,21 @@ func main() {
 	fmt.Printf("user1: %#v\n", user1)
 }
 
-// 地址结构体
+// Address 地址结构体
 type Address struct {
 	province   string
 	city       string
 	CreateTime string
 }
 
-// 用户结构体(嵌套结构体)
+// User 用户结构体(嵌套结构体)
 type User struct {
 	Name    string
 	Gender  string
 	Address Address
 }
 
-//嵌套结构体的字段名冲突
+// Email 嵌套结构体的字段名冲突
 type Email struct {
 	Account    string
 	CreateTime string

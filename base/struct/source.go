@@ -1,4 +1,4 @@
-package source
+package teststruct
 
 type person0 struct {
 	name string
@@ -14,4 +14,9 @@ type person1 struct {
 type person struct {
 	name, city string
 	age        int8
+}
+
+type Person struct {
+	name string
+	age  int8
 }

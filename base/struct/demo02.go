@@ -1,4 +1,4 @@
-package main
+package teststruct
 
 import (
 	"fmt"
@@ -19,18 +19,6 @@ import (
 	3.字段类型：
 */
 func main() {
-	//1.结构体定义
-	type person0 struct {
-		name string
-		city string
-		age  int8
-	}
-
-	//相同类型字段可以同时定义
-	type person1 struct {
-		name, city string
-		age        int8
-	}
 
 	//2.结构体实例化
 	// var 实例名 结构体类型
