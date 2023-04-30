@@ -1,4 +1,4 @@
-package teststruct
+package main
 
 import "fmt"
 
@@ -17,7 +17,11 @@ import "fmt"
 */
 func main() {
 	p1 := newInstance("sw", 25)
+	fmt.Printf("p1 age = %v\n", p1.age) //p1 age = 25
 	p1.Dream()
+	fmt.Printf("p1 age = %v\n", p1.age) //p1 age = 25
+	p1.Sleep()
+	fmt.Printf("p1 age = %v\n", p1.age) //p1 age = 18
 }
 
 func newInstance(name string, age int8) *Person {
@@ -27,6 +31,14 @@ func newInstance(name string, age int8) *Person {
 	}
 }
 
+// Dream 值类型接受者	修改不影响原值
 func (p Person) Dream() {
-	fmt.Printf("%s的梦想是学好go语言", p.name)
+	fmt.Printf("%s的梦想是学好go语言\n", p.name)
+	p.age = 20
+}
+
+// Sleep 指针类型接受者	修改影响原值
+func (p *Person) Sleep() {
+	fmt.Printf("%s要睡觉了\n", p.name)
+	p.age = 18
 }

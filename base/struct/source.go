@@ -1,4 +1,4 @@
-package teststruct
+package main
 
 type person0 struct {
 	name string
