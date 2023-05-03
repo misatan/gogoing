@@ -1517,3 +1517,68 @@ func main() {
 ```
 
 反射之后学习
+
+
+
+## Flow_Control
+
+#### IF
+
+```go
+if 布尔表达式 {
+    执行体
+}else if 布尔表达式{
+
+    执行体
+}else{
+
+    执行体
+}
+```
+
+示例：
+
+```go
+func main() {
+	ifTest(100)
+}
+
+func ifTest(num int) {
+	if num < 0 {
+		fmt.Println("num < 0,num:", num)
+	} else if num < 100 {
+		fmt.Println("num < 100,num:", num)
+	} else {
+		fmt.Println("num >= 100,num:", num)
+	}
+}
+```
+
+Go语言不支持三目运算符，避免影响GO语言简洁性和代码的可读性
+
+
+
+#### Switch
+
+Go switch 分支表达式**可以是不同的类型，不限于常量**。可以省略break，默认自动终止
+
+复习一下Java分支表达式：**byte、short、char、int、Byte、Short、Character、Integer、Enum、String**
+
+```go
+switch <expression>{
+	case var1:
+   		...
+    case var2:
+    	...
+    case var3:
+    	...
+    default:
+        ...
+}
+```
+
+示例：
+
+```go
+```
+
